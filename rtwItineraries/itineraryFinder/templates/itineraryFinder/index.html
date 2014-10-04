@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% load staticfiles %}
+
+{% block css %}<link rel="stylesheet" href="{% static 'css/index.css' %}">{% endblock %}
+
+{% block content %}
+
+	<div id="slideshow">
+		<figure>
+			<img id="img2" src="{% static 'img/slideshow/zanzibar.jpg' %}" />
+		</figure>
+		<figure>
+			<img id="img3" src="{% static 'img/slideshow/singapore.jpg' %}" />
+		</figure>
+		<figure>
+			<img id="img4" src="{% static 'img/slideshow/torres_paine.jpg' %}" />
+		</figure>
+		<figure>
+			<img id="img1" src="{% static 'img/slideshow/seattle.jpg' %}" />
+		</figure>
+		<figure>
+			<img id="img0" src="{% static 'img/slideshow/budapest.jpg' %}" />
+		</figure>
+		<figure>
+			<img id="img5" src="{% static 'img/slideshow/uluru.jpg' %}" />
+		</figure>
+	</div>
+
+	<div id="overlay">
+		<p id="slogan">Find your way around the world!</p>
+
+		<form action="{% url 'search' %}" method="get">
+		<!--{% csrf_token %}-->
+			
+			<div id="form">
+				<table border="0" align="center">
+					<tbody>
+						<tr>
+							<td id="left-column">
+								<label for="budget">Budget (per person) </label> <span class="currency-text">in <select id="currency-select" name="currency" onchange="getCurrency(this);"><option value="EUR">EUR</option><option value="USD">USD</option><option value="GBP">GBP</option><option value="SGD">SGD</option></select></span>
+								<br />
+								<input id="input-budget" name="budget" type="range" min="10000" max="30000" value="20000" step="5000" onchange="showValue('budget', this.value)" />
+								<br />
+								<span class="value-text"><span id="value-budget">20000</span> <span id="currency-display">€</span></span>
+
+								<br /><br />
+								
+								<label for="duration">Duration </label>
+								<br />
+								<input name="duration" type="range" min="6" max="12" value="9" step="3" onchange="showValue('duration', this.value)" />
+								<br />
+								<span class="value-text"><span id="value-duration">9</span> months</span>
+							</td>
+							<td class="empty">
+							</td>
+							<td id="right-column">
+								<label for="country">Departing from</label>
+								<br />
+								<select id="country-select" name="country">
+									{% for country in countries %}
+									<option value="{{ country.code }}">{{ country.name }}</option>
+									{% endfor %}
+								</select>
+
+								<br /><br />
+
+								<label for="date">Departing in</label>
+								<br />
+								<select id="date-select" name="date">
+									<option value="1">January</option>
+									<option value="2">February</option>
+									<option value="3">March</option>
+									<option value="4">April</option>
+									<option value="5">May</option>
+									<option value="6">June</option>
+									<option value="7">July</option>
+									<option value="8">August</option>
+									<option value="9">September</option>
+									<option value="10">October</option>
+									<option value="11">November</option>
+									<option value="12">December</option>
+								</select>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+
+				<br />
+
+				<div id="submit-button">
+					<input type="submit" value="Let's go RTW!" />
+				</div>
+			</div>
+			
+		</form>
+	</div>
+
+
+{% endblock %}
+
+{% block scripts %}
+<script type="text/javascript">
+	function showValue(id, val){
+		if(id == 'duration')
+			document.getElementById('value-'+ id).innerHTML = val;
+
+		else {
+			if (document.getElementById('currency-select').value == 'EUR')
+				document.getElementById('value-'+ id).innerHTML = val;
+
+			else if(document.getElementById('currency-select').value == 'USD')
+				document.getElementById('value-'+ id).innerHTML = val * 1.3;
+
+			else if(document.getElementById('currency-select').value == 'SGD')
+				document.getElementById('value-'+ id).innerHTML = val * 1.7;
+
+			else if(document.getElementById('currency-select').value == 'GBP')
+				document.getElementById('value-'+ id).innerHTML = val * 0.8;
+		}
+
+	}
+
+	function getCurrency (select) {
+		var value = select.value;
+		var budget = document.getElementById('input-budget').value;
+
+		if(value == 'USD'){
+			document.getElementById('currency-display').innerHTML = '$';
+			document.getElementById('value-budget').innerHTML = budget * 1.3;
+		} 
+		else if (value == 'SGD'){
+			document.getElementById('currency-display').innerHTML = '$';
+			document.getElementById('value-budget').innerHTML = budget * 1.7;
+		}
+		else if (value == 'GBP'){
+			document.getElementById('currency-display').innerHTML = '£';
+			document.getElementById('value-budget').innerHTML = budget * 0.8;
+		}
+		else{
+			document.getElementById('currency-display').innerHTML = '€';
+			document.getElementById('value-budget').innerHTML = budget;
+		}
+	}
+</script>
+{% endblock %}

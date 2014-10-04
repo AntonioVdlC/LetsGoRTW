@@ -1,0 +1,111 @@
+@import 'master';
+
+//------// -- RESULTS -- \\
+
+#content{
+
+	background: url("img/sos.png") repeat;
+
+	#results-text{
+		text-align: center;
+		margin-top: 2.5%;
+
+		@include font-size(12);
+
+		.blue{
+			color: #1E90FF;//blue;//#35586C;
+			font-weight: bold;
+		}
+	}
+
+	#search-again{
+		text-align: center;
+		margin-top: 2.5%;
+
+		@include font-size(8);
+
+			a{
+				color:#1E90FF;
+				text-decoration: none;
+			}
+
+	}
+
+	#results{
+		margin-left: 5%;
+		margin-top: 2.5%;
+		max-height: 65%;
+
+		overflow: auto;
+
+		border-top: 1px solid black;
+		width: 90%;
+
+		.rtw-preview{
+			list-style-type: none;
+
+			height: 100px;
+
+			margin-top: 25px;
+
+			border-bottom: 1px solid black;
+			padding-bottom: 10px;
+
+			img{
+				margin-top: -5px;
+				height: 100px;
+				width: 70px;
+			}
+
+			a{
+				text-decoration: none;
+				color: black;
+			}
+
+			li{
+				width: 100%;
+				height: 100%;
+			}
+
+			.res{
+				padding-left: 15px;
+
+				.res-title{
+					@include font-size(12);
+					font-weight: bold;
+
+					margin-top: 5px;
+					margin-bottom: 0px;
+				}
+
+				.res-description{
+					@include font-size(9);
+					margin-top: 10px;
+				}
+			}
+
+			.goarrow{
+				float: right;
+			}
+
+		}
+	}
+
+	#no-itineraries{
+		text-align: center;
+		margin-top: 15%;
+
+		@include font-size(14);
+	}
+
+	#search-again-no-it{
+		text-align: center;
+		margin-top: 5%;
+
+		@include font-size(14);
+
+			a{
+				text-decoration: none;
+			}
+	}
+}
