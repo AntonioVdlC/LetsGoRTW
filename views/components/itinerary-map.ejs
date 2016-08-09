@@ -1,0 +1,9 @@
+<%- include("../styles/itinerary-map.ejs") %>
+
+<div class="map-view">
+    <iframe src="http://u.osmfr.org/m/<%=itinerary.mapid%>/?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&allowEdit=false&moreControl=false&datalayersControl=false&onLoadPanel=undefined#2/20.0/0.0" width="100%" height="500px"></iframe>
+    
+    <p class="map-link">
+        <a href="http://u.osmfr.org/m/<%=itinerary.mapid%>/">See the map fullscreen!</a>
+    </p> 
+</div>

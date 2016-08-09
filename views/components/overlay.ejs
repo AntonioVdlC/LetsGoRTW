@@ -1,0 +1,84 @@
+<%- include("../styles/overlay") %>
+<%- include("../scripts/overlay") %>
+
+<div class="overlay">
+    <p class="slogan">Find your way around the world!</p>
+
+    <form action="/search" method="get">
+        <div class="form">
+            <table border="0" align="center">
+                <tbody>
+                    <tr>
+                        <td class="left-column">
+                            <label for="budget">Budget (per person) </label> <span class="currency-text">in 
+                                <select id="currency-select" name="currency" onchange="getCurrency(this);">
+                                    <option value="EUR">EUR</option>
+                                    <option value="USD">USD</option>
+                                    <option value="GBP">GBP</option>
+                                    <option value="SGD">SGD</option>
+                                </select>
+                            </span>
+                            <br />
+                            <input id="budget" name="budget" type="range" min="10000" max="30000" value="20000" step="5000" onchange="showValue('budget', this.value)" />
+                            <br />
+                            <span class="value-text">
+                                <span id="value-budget">20000</span> <span id="currency-display">€</span>
+                            </span>
+
+                            <br /><br />
+                            
+                            <label for="duration">Duration </label>
+                            <br />
+                            <input name="duration" id="duration" type="range" min="6" max="12" value="9" step="3" onchange="showValue('duration', this.value)" />
+                            <br />
+                            <span class="value-text">
+                                <span id="value-duration">9</span> months
+                            </span>
+                        </td>
+
+                        <td class="empty">
+                        </td>
+                        
+                        <td class="right-column">
+                            <label for="country">Departing from</label>
+                            <br />
+                            <select id="country" name="country" class="select">
+                                <% countries.forEach((country) => { %>
+                                    <option value="<%=country.code%>">
+                                        <%=country.name%>
+                                    </option>
+                                <% }) %>
+                            </select>
+
+                            <br /><br />
+
+                            <label for="date">Departing in</label>
+                            <br />
+                            <select id="date" name="date" class="select">
+                                <option value="1">January</option>
+                                <option value="2">February</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <br />
+
+            <div class="submit-button">
+                <input type="submit" value="Let's go RTW!" />
+            </div>
+        </div>
+        
+    </form>
+</div>

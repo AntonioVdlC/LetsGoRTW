@@ -1,0 +1,19 @@
+html, body, ul, ol {
+    margin: 0;
+    padding: 0; 
+}
+
+body {
+    overflow: hidden; 
+}
+
+*:focus {
+    outline: none; 
+}
+
+main {
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: calc(100% - 50px - 25px); 
+}

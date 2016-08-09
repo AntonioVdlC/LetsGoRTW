@@ -1,0 +1,12 @@
+<%- include("../styles/itineraries-list") %>
+
+<% if (itineraries.length) { %>
+    <%- include("search-text", itineraries) %>
+    <ul class="results">
+        <% itineraries.forEach(itinerary => { %>
+            <%- include("itinerary-preview", {itinerary}) %>
+        <% }) %>
+    </ul>
+<% } else { %>
+    <%- include("no-itineraries") %>
+<% } %>

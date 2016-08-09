@@ -1,0 +1,45 @@
+<script>
+    function showValue(id, val){
+        if (id === "budget") {
+            val = convertCurrency(document.getElementById('currency-select').value, val).val
+        }
+        
+        document.getElementById('value-'+ id).innerHTML = val
+    }
+    
+    function getCurrency (select) {
+        let budget = convertCurrency(select.value, document.getElementById('budget').value)
+
+        document.getElementById('currency-display').innerHTML = budget.sym;
+        document.getElementById('value-budget').innerHTML = budget.val;
+    }
+
+    function convertCurrency (currency, value) {
+        let val
+        let sym
+
+        switch (currency) {
+            case "USD":
+                val = value * 1.3
+                sym = "$"
+                break
+            case "SGD":
+                val = value * 1.7
+                sym = "$"
+                break
+            case "GBP":
+                val = value * 0.8
+                sym = "£"
+                break
+            case "EUR":
+            default:
+                val = value
+                sym = "€"
+        }
+        
+        return {
+            val,
+            sym
+        }
+    }
+</script>
