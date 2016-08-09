@@ -1,0 +1,31 @@
+{
+  "name": "lets-go-rtw",
+  "version": "1.0.0",
+  "description": "Find your way around the world!",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "start": "forever index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/AntonioVdlC/LetsGoRTW.git"
+  },
+  "author": "Antonio Villagra De La Cruz (antoniovdlc.me)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AntonioVdlC/LetsGoRTW/issues"
+  },
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "dependencies": {
+    "ejs": "^2.5.1",
+    "express": "^4.14.0",
+    "forever": "^0.15.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.10.0"
+  }
+}
