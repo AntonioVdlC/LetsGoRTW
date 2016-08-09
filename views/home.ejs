@@ -11,7 +11,9 @@
         </header>
         <main>
             <%- include("components/slideshow") %>
-            <%- include("components/overlay") %>
+            <%- include("components/overlay", {
+                    countries: countries
+                }) %>
         </main>
         <footer>
             <%- include("components/footer") %>

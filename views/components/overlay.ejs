@@ -43,8 +43,11 @@
                             <label for="country">Departing from</label>
                             <br />
                             <select id="country" name="country" class="select">
-                                <option value="TODO"> >> TODO </option>
-                                <option value="FR">France</option>
+                                <% countries.forEach(function (country) { %>
+                                    <option value="<%=country.code%>">
+                                        <%=country.name%>
+                                    </option>
+                                <% }) %>
                             </select>
 
                             <br /><br />
