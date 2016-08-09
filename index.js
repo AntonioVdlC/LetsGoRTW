@@ -14,6 +14,7 @@ app.use(express.static(__dirname + "/public"))
 app.use("/", require("./routes/home"))
 app.use("/about", require("./routes/about"))
 app.use("/search", require("./routes/search"))
+app.use("/itinerary", require("./routes/itinerary"))
 
 // Server
 app.listen(port, () => {
