@@ -1,0 +1,5 @@
+<%- include("../styles/search-text") %>
+
+<p class="results-text">
+    <span class="highlight"><%=itineraries.length%></span> itinerar<%=((itineraries.length > 1) ? "ies" : "y")%> found for a <span class="highlight"><%=itineraries[0].duration%>-month</span>  world tour departing from <span class="highlight"><%=itineraries[0].country%></span>  in <span class="highlight" id="date"><%=itineraries.month%></span>  with <span class="highlight" id="budget"><%=itineraries.budget.val%> <%=itineraries.budget.sym%></span>  per person.
+</p>

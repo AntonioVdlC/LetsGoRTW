@@ -1,0 +1,15 @@
+<%- include("../styles/itinerary-preview") %>
+
+<div class="itinerary-preview">
+    <a href="/itinerary/<%=itinerary.mapid%>">
+        <li>
+            <img class="goarrow" src="/img/goarrow.png" alt="Go Arrow" />
+            <section class="res">
+                <p class="res-title"><%=itinerary.title%></p>
+                <p class="res-description">
+                    <%=itinerary.short_description%>
+                </p>
+            </section>
+        </li>
+    </a>
+</div>
