@@ -1,22 +1,23 @@
-const fetch = require("node-fetch")
-
 const express = require("express")
 const router = express.Router()
 
-router.get("/", (req, res, next) => {
-    const urls = [
-        req.protocol + "://" + req.get("host") + "/api/countries"
-    ]
-
-    Promise.all(urls.map(url => 
-        fetch(url).then(data => data.json())
-    ))
-    .then(json => {
-        res.render("home", {
-            countries: json[0]
-        })
+// Data
+const itineraries = require("./../data/itineraries")
+const countries = itineraries
+    .map(itinerary => {
+        return { 
+            name: itinerary.country,
+            code: itinerary.country_code
+        }
     })
-    .catch(err => next(err))
+    .sort((a, b) => (a.name > b.name) ? 1 : (a.name < b.name) ? -1 : 0)
+    .filter((c, i, cc) => !i || c.code !== cc[i-1].code)
+
+// Route
+router.get("/", (req, res) => {
+    res.render("home", {
+        countries: countries
+    })
 })
 
 module.exports = router

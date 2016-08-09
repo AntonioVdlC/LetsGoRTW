@@ -14,9 +14,6 @@ app.use(express.static(__dirname + "/public"))
 app.use("/", require("./routes/home"))
 app.use("/about", require("./routes/about"))
 
-// API
-app.use("/api", require("./routes/api"))
-
 // Server
 app.listen(port, () => {
     console.log("Listening on port " + port)
