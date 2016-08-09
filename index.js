@@ -12,6 +12,7 @@ app.use(express.static(__dirname + "/public"))
 
 // Routes
 app.use("/", require("./routes/home"))
+app.use("/about", require("./routes/about"))
 
 // Server
 app.listen(port, () => {
